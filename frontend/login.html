@@ -1,0 +1,57 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeLoyiha - Login</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h1>Login Form</h1>
+            <p>Assalomu alaykum!</p>
+        </div>
+
+        <form method="post">
+            {% csrf_token %}
+            
+            <div class="input-group">
+                <label for="id_username">Login</label>
+                {{ form.username }} 
+            </div>
+            
+            <div class="input-group">
+                <label for="id_password">Parol</label>
+                {{ form.password }}
+            </div>
+        
+            {% if form.errors %}
+                <div class="error-messages">
+                    <ul>
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        
+            <button type="submit" class="login-button">Kirish</button>
+        </form>
+              
+
+        <div class="footer">
+            <p>DeLoyiha - itbrain.uz</p>
+            <p>© 2024 <a href="https://itbrain.uz/#contact">ITBrain Freelancers</a>. Barcha huquqlar himoyalangan</p>
+        </div>
+    </div>
+
+</body>
+
+</html>
